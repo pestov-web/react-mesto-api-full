@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 const error = require('./middlewares/error');
+const cors = require('cors');
 
 const { login, createUser } = require('./controllers/users');
 
@@ -28,6 +29,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
+
+
+app.use('*', cors({
+  origin: 'http://pestov.students.nomoredomains.rocks',
+  credentials: true,
+}));
 
 app.use(requestLogger);
 
