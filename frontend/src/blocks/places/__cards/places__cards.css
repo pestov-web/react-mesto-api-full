@@ -1,0 +1,22 @@
+.places__cards {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  row-gap: 20px;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .places__cards {
+    grid-template-columns: 282px 282px;
+    column-gap: 17px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .places__cards {
+    grid-template-columns: 282px 282px 282px;
+    column-gap: 17px;
+  }
+}
