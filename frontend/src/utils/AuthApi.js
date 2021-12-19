@@ -6,7 +6,11 @@ class AuthApi {
 
   // возвращаем ошибку в случае ошибки =)
   _handleResponse(res) {
-    if (res.ok) return res.json();
+    if (res.ok) {
+      console.log(res.data);
+      return res.json();
+    }
+
     return Promise.reject(`ошибка ! : ${res.status}`);
   }
 
@@ -42,7 +46,9 @@ class AuthApi {
 const auth = new AuthApi({
   baseUrl: "https://api.pestov.students.nomoredomains.rocks",
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    credentials: 'include',
   },
 });
 

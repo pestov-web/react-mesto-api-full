@@ -96,10 +96,12 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-27",
+  baseUrl: "https://api.pestov.students.nomoredomains.rocks",
   headers: {
-    authorization: "13487b8e-c128-4492-9187-00285c5e1c9d",
-    "Content-Type": "application/json",
+    // authorization: "13487b8e-c128-4492-9187-00285c5e1c9d",
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    credentials: 'include',
   },
 });
 
