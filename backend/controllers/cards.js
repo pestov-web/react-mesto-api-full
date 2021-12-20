@@ -20,7 +20,7 @@ module.exports.deleteCard = (req, res, next) => {
       }
       Card.findByIdAndRemove(req.params._id)
         .orFail(new NotFoundError('Карточки с таким id не существует'))
-        .then((deletedCard) => res.send({ data: deletedCard }))
+        .then((deletedCard) => res.send(deletedCard))
         .catch(next);
     })
     .catch(next);

@@ -36,7 +36,7 @@ module.exports.getCurrentUser = (req, res, next) => {
 module.exports.getUserById = (req, res, next) => {
   User.findById(req.params._id)
     .orFail(new NotFoundError('Пользователя не существует'))
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные'));
@@ -63,7 +63,7 @@ module.exports.createUser = (req, res, next) => {
       }
       next(err);
     })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные'));
@@ -85,7 +85,7 @@ module.exports.updateUser = (req, res, next) => {
     },
   )
     .orFail(new NotFoundError('Пользователя не существует'))
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные'));
@@ -107,7 +107,7 @@ module.exports.updateUserAvatar = (req, res, next) => {
     },
   )
     .orFail(new NotFoundError('Пользователя не существует'))
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные'));
