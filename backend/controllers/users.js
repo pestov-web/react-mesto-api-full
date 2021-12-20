@@ -130,9 +130,15 @@ module.exports.login = (req, res, next) => {
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
-        sameSite:  true,
+        sameSite: true,
       })
-        .send(user);
+        .send(
+          {
+            name: user.name,
+            about: user.about,
+            avatar: user.avatar,
+          },
+        );
     })
     .catch(() => {
       throw new AuthorizationError('Введен неверный логин или пароль');
