@@ -22,9 +22,10 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 const corsOptions = {
-  origin: '*',
-  credentials: true,
-  exposedHeaders: ["set-cookie"]
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
 };
 
 app.use(cors(corsOptions));
