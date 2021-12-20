@@ -31,9 +31,9 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 
 
-app.use('*', cors({
-  origin: 'https://pestov.students.nomoredomains.rocks',
+app.use(cors({
   credentials: true,
+  origin: 'https://pestov.students.nomoredomains.rocks',
 }));
 
 app.use(requestLogger);
