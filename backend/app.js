@@ -37,12 +37,17 @@ const whitelist = [
   'https://api.pestov.students.nomoredomains.rocks',
 ];
 
-const corsOptions = {
-  origin: whitelist,
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: whitelist,
+//   credentials: true,
+// };
+//
+// app.use(cors(corsOptions));
 
-app.use(cors(corsOptions));
+app.use(cors({
+  origin:true,
+  credentials:true
+}));
 
 app.use(requestLogger);
 
