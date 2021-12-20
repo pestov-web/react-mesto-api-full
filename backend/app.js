@@ -39,7 +39,8 @@ const whitelist = [
 app.use(cors({
   'credentials': true,
   'origin': '*',
-}))
+  exposedHeaders: ["set-cookie"],
+}));
 
 app.use(requestLogger);
 
