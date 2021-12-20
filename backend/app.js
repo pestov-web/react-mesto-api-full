@@ -37,8 +37,8 @@ const whitelist = [
 ];
 
 app.use(cors({
-  'allowedHeaders': ['sessionId', 'Content-Type'],
-  'exposedHeaders': ['sessionId'],
+  'allowedHeaders': ['sessionId', 'Content-Type', 'Authorization'],
+  // 'exposedHeaders': ['sessionId'],
   'credentials': true,
   'origin': whitelist,
 }))
