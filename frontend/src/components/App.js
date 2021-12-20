@@ -104,7 +104,7 @@ function App() {
 
   // лайкаем карточку
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     api
       .changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
@@ -203,10 +203,8 @@ function App() {
   }
 
   React.useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    auth.checkToken(token).then(
+    auth.checkToken().then(
       (res) => {
-        console.log(res)
         setCurrentUserEmail(res.email);
         setLoggedIn(true);
         history.push("/");
@@ -220,7 +218,7 @@ function App() {
   // удаляем токен на выходе
   function handleSingOut() {
     setLoggedIn(false);
-    localStorage.removeItem("jwt");
+    // localStorage.removeItem("jwt");
     history.push("/sign-in");
   }
 
@@ -229,7 +227,7 @@ function App() {
     api
       .getUserInfo()
       .then((userData) => {
-        console.log(userData)
+        console.log(userData._id)
         setCurrentUser(userData);
       })
       .catch((err) => {

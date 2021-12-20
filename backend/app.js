@@ -10,7 +10,7 @@ const { errors } = require('celebrate');
 const error = require('./middlewares/error');
 
 
-const { login, createUser } = require('./controllers/users');
+const { login, createUser, logout } = require('./controllers/users');
 
 const { validateUser, validateLogin } = require('./middlewares/validate');
 const NotFoundError = require('./errors/NotFoundError');
@@ -40,7 +40,7 @@ app.use(requestLogger);
 
 app.post('/signin', validateLogin, login);
 app.post('/signup', validateUser, createUser);
-
+app.post('/signout', logout);
 // используем авторизацию для роутов которые ниже
 app.use(auth);
 
