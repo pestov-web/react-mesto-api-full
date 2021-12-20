@@ -49,6 +49,7 @@ const auth = new AuthApi({
     'Content-Type': 'application/json',
     Accept: 'application/json',
     credentials: 'include',
+    mode: 'cors',
   },
 });
 
