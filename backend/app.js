@@ -33,13 +33,15 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 const whitelist = [
   'http://localhost:3000',
   'https://pestov.students.nomoredomains.rocks',
-  'https://api.pestov.students.nomoredomains.rocks',
+  'http://pestov.students.nomoredomains.rocks',
 ];
 
-const corsOptions = {
-  origin: whitelist,
-  credentials: true,
-};
+app.use(cors({
+  'allowedHeaders': ['sessionId', 'Content-Type'],
+  'exposedHeaders': ['sessionId'],
+  'credentials': true,
+  'origin': whitelist,
+}))
 
 app.use(cors(corsOptions));
 
