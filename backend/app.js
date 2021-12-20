@@ -9,7 +9,6 @@ const helmet = require('helmet');
 const { errors } = require('celebrate');
 const error = require('./middlewares/error');
 
-
 const { login, createUser, logout } = require('./controllers/users');
 
 const { validateUser, validateLogin } = require('./middlewares/validate');

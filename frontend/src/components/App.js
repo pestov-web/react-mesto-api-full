@@ -23,6 +23,7 @@ import ProtectedRoute from "./ProtectedRoute";
 
 // подключаем контекст
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import login from "./Login";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
@@ -169,7 +170,7 @@ function App() {
       auth
         .authorize(password, email)
         .then((res) => {
-          console.log(res);
+          setCurrentUser(res);
           setCurrentUserEmail(email);
           setLoggedIn(true);
           history.push("/");
@@ -233,7 +234,6 @@ function App() {
     api
       .getUserInfo()
       .then((userData) => {
-        console.log(userData._id)
         setCurrentUser(userData);
       })
       .catch((err) => {
