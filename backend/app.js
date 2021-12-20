@@ -30,19 +30,17 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-// const whitelist = [
-//   'http://localhost:3000',
-//   'https://pestov.students.nomoredomains.rocks',
-//   'http://pestov.students.nomoredomains.rocks',
-// ];
-//
-// app.use(cors({
-//   'allowedHeaders': "*",
-//   // 'exposedHeaders': ['sessionId'],
-//   'credentials': true,
-//   'origin': whitelist,
-// }))
-app.use(cors());
+const whitelist = [
+  'http://localhost:3000',
+  'https://pestov.students.nomoredomains.rocks',
+  'http://pestov.students.nomoredomains.rocks',
+];
+
+app.use(cors({
+  'credentials': true,
+  'origin': '*',
+}))
+
 app.use(requestLogger);
 
 app.post('/signin', validateLogin, login);
