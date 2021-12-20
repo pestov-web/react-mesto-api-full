@@ -134,6 +134,7 @@ function App() {
     api
       .postNewCard(newCard)
       .then((res) => {
+        console.log(res);
         setCards([res, ...cards]);
         closeAllPopups();
       })
@@ -170,7 +171,7 @@ function App() {
         .then((res) => {
           setCurrentUserEmail(email);
           setLoggedIn(true);
-          // localStorage.setItem("jwt", res.token);
+          localStorage.setItem("jwt", res.token);
           history.push("/");
         })
         .catch((err) => {
@@ -205,7 +206,8 @@ function App() {
     const token = localStorage.getItem("jwt");
     auth.checkToken(token).then(
       (res) => {
-        setCurrentUserEmail(res.data.email);
+        console.log(res)
+        setCurrentUserEmail(res.email);
         setLoggedIn(true);
         history.push("/");
       },
@@ -227,6 +229,7 @@ function App() {
     api
       .getUserInfo()
       .then((userData) => {
+        console.log(userData)
         setCurrentUser(userData);
       })
       .catch((err) => {
@@ -235,9 +238,8 @@ function App() {
 
     api
       .getInitialCards()
-      .then((cards1) => {
-        console.log(cards1);
-        setCards(cards1);
+      .then((cards) => {
+        setCards(cards);
       })
       .catch((err) => {
         console.log(`ошибка: ${err}`);
