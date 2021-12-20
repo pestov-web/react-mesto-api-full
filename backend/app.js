@@ -43,8 +43,6 @@ app.use(cors({
   'origin': whitelist,
 }))
 
-app.use(cors(corsOptions));
-
 app.use(requestLogger);
 
 app.post('/signin', validateLogin, login);
