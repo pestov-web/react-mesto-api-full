@@ -235,8 +235,9 @@ function App() {
 
     api
       .getInitialCards()
-      .then((cards) => {
-        setCards(cards);
+      .then((cards1) => {
+        console.log(cards1);
+        setCards(cards1);
       })
       .catch((err) => {
         console.log(`ошибка: ${err}`);

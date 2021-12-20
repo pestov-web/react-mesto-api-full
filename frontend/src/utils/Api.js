@@ -2,6 +2,7 @@ class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
     this._headers = options.headers;
+    this._credentials = options.credentials;
   }
 
   // возвращаем ошибку в случае ошибки =)
@@ -16,6 +17,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
       headers: this._headers,
+      credentials: this._credentials,
     }).then((res) => this._handleResponse(res));
   }
 
@@ -24,6 +26,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: this._headers,
+      credentials: this._credentials,
     }).then((res) => this._handleResponse(res));
   }
 
@@ -36,6 +39,7 @@ class Api {
         name: data.name,
         about: data.about,
       }),
+      credentials: this._credentials,
     }).then((res) => this._handleResponse(res));
   }
 
@@ -47,6 +51,7 @@ class Api {
       body: JSON.stringify({
         avatar: data.avatar,
       }),
+      credentials: this._credentials,
     }).then((res) => this._handleResponse(res));
   }
 
@@ -59,6 +64,7 @@ class Api {
         name: data.name,
         link: data.link,
       }),
+      credentials: this._credentials,
     }).then((res) => this._handleResponse(res));
   }
 
@@ -67,6 +73,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
+      credentials: this._credentials,
     }).then((res) => this._handleResponse(res));
   }
 
@@ -83,6 +90,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       method: "PUT",
       headers: this._headers,
+      credentials: this._credentials,
     }).then((res) => this._handleResponse(res));
   }
 
@@ -91,6 +99,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       method: "DELETE",
       headers: this._headers,
+      credentials: this._credentials,
     }).then((res) => this._handleResponse(res));
   }
 }
@@ -101,9 +110,8 @@ const api = new Api({
     // authorization: "13487b8e-c128-4492-9187-00285c5e1c9d",
     'Content-Type': 'application/json',
     Accept: 'application/json',
-    credentials: 'include',
-    mode: 'cors',
   },
+  credentials: 'include',
 });
 
 export default api;

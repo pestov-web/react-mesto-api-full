@@ -2,12 +2,12 @@ class AuthApi {
   constructor(options) {
     this._baseUrl = options.baseUrl;
     this._headers = options.headers;
+    this._credentials = options.credentials;
   }
 
   // возвращаем ошибку в случае ошибки =)
   _handleResponse(res) {
     if (res.ok) {
-      console.log(res.data);
       return res.json();
     }
 
@@ -20,6 +20,7 @@ class AuthApi {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({ password, email }),
+      credentials: this._credentials,
     }).then(this._handleResponse);
   }
   // авторизация пользователя
@@ -28,6 +29,7 @@ class AuthApi {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({ password, email }),
+      credentials: this._credentials,
     }).then(this._handleResponse);
   }
 
@@ -39,6 +41,7 @@ class AuthApi {
         ...this._headers,
         Authorization: `Bearer ${token}`,
       },
+      credentials: this._credentials,
     }).then(this._handleResponse);
   }
 }
@@ -48,9 +51,8 @@ const auth = new AuthApi({
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
-    credentials: 'include',
-    mode: 'cors',
   },
+  credentials: 'include',
 });
 
 export default auth;
