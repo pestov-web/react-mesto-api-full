@@ -32,6 +32,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 const whitelist = [
   'http://localhost:3000',
+  'https://api.pestov.students.nomoredomains.rocks/signin',
   'https://pestov.students.nomoredomains.rocks',
   'https://api.pestov.students.nomoredomains.rocks',
 ];
