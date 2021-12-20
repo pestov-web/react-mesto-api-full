@@ -169,9 +169,9 @@ function App() {
       auth
         .authorize(password, email)
         .then((res) => {
+          console.log(res);
           setCurrentUserEmail(email);
           setLoggedIn(true);
-          localStorage.setItem("jwt", res.token);
           history.push("/");
         })
         .catch((err) => {
@@ -217,9 +217,15 @@ function App() {
 
   // удаляем токен на выходе
   function handleSingOut() {
-    setLoggedIn(false);
-    // localStorage.removeItem("jwt");
-    history.push("/sign-in");
+    auth.logOut().then(
+        () => {
+          setLoggedIn(false);
+          history.push("/sign-in");
+        },
+        (err) => {
+          console.log(err);
+        }
+    );
   }
 
   React.useEffect(() => {

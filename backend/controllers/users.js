@@ -132,7 +132,7 @@ module.exports.login = (req, res, next) => {
         httpOnly: true,
         sameSite:  true,
       })
-        .send({ email: user.email });
+        .send(user);
     })
     .catch(() => {
       throw new AuthorizationError('Введен неверный логин или пароль');

@@ -41,6 +41,14 @@ class AuthApi {
       credentials: this._credentials,
     }).then(this._handleResponse);
   }
+
+  logOut() {
+    return fetch(`${this._baseUrl}/signout`, {
+      method: "POST",
+      headers: this._headers,
+      credentials: this._credentials,
+    }).then(this._handleResponse);
+  }
 }
 
 const auth = new AuthApi({
