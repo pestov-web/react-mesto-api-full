@@ -21,6 +21,12 @@ const auth = require('./middlewares/auth');
 const { PORT = 3000 } = process.env;
 const app = express();
 
+app.use(cors({
+  'credentials': true,
+  'origin': '*',
+  exposedHeaders: ["set-cookie"],
+}));
+
 app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -30,17 +36,13 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-const whitelist = [
-  'http://localhost:3000',
-  'https://pestov.students.nomoredomains.rocks',
-  'http://pestov.students.nomoredomains.rocks',
-];
+// const whitelist = [
+//   'http://localhost:3000',
+//   'https://pestov.students.nomoredomains.rocks',
+//   'http://pestov.students.nomoredomains.rocks',
+// ];
 
-app.use(cors({
-  'credentials': true,
-  'origin': '*',
-  exposedHeaders: ["set-cookie"],
-}));
+
 
 app.use(requestLogger);
 

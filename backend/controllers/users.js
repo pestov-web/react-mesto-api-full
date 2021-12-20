@@ -129,9 +129,9 @@ module.exports.login = (req, res, next) => {
       );
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
-        httpOnly: false,
-        sameSite: "none",
-        secure: true,
+        httpOnly: true,
+        sameSite: true,
+
       })
         .send({ email: user.email });
     })
