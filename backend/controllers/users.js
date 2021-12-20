@@ -132,6 +132,7 @@ module.exports.login = (req, res, next) => {
         httpOnly: true,
         sameSite: "none",
         secure: true,
+        domain: "https://pestov.students.nomoredomains.rocks",
       })
         .send({ email: user.email });
     })

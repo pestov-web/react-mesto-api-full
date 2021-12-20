@@ -170,7 +170,7 @@ function App() {
         .then((res) => {
           setCurrentUserEmail(email);
           setLoggedIn(true);
-          localStorage.setItem("jwt", res.token);
+          // localStorage.setItem("jwt", res.token);
           history.push("/");
         })
         .catch((err) => {
