@@ -131,7 +131,7 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: true,
-        domain: 'pestov.students.nomoredomains.rocks',
+        domain: 'https://pestov.students.nomoredomains.rocks',
       })
         .send({ email: user.email });
     })
