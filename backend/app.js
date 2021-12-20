@@ -3,11 +3,12 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 const error = require('./middlewares/error');
-const cors = require('cors');
+
 
 const { login, createUser } = require('./controllers/users');
 
@@ -21,19 +22,10 @@ const auth = require('./middlewares/auth');
 const { PORT = 3000 } = process.env;
 const app = express();
 
-const corsOptions = {
-  "origin": "*",
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": false,
-  "optionsSuccessStatus": 204
-};
-
-app.use(cors(corsOptions));
-// app.use(cors({
-//   'credentials': true,
-//   'origin': '*',
-//   exposedHeaders: ["set-cookie"],
-// }));
+app.use('*', cors({
+  origin: 'https://pestov.students.nomoredomains.rocks',
+  credentials: true,
+}));
 
 app.use(helmet());
 app.use(cookieParser());
@@ -43,14 +35,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
-
-// const whitelist = [
-//   'http://localhost:3000',
-//   'https://pestov.students.nomoredomains.rocks',
-//   'http://pestov.students.nomoredomains.rocks',
-// ];
-
-
 
 app.use(requestLogger);
 
