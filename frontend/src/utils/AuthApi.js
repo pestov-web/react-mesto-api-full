@@ -52,7 +52,7 @@ class AuthApi {
 }
 
 const auth = new AuthApi({
-  baseUrl: "https://api.pestov.students.nomoredomains.rocks",
+  baseUrl: "https://api2.pestov-web.ru",
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',

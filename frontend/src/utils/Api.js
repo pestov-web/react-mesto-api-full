@@ -105,7 +105,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://api.pestov.students.nomoredomains.rocks",
+  baseUrl: "https://api2.pestov-web.ru",
   headers: {
     // authorization: "13487b8e-c128-4492-9187-00285c5e1c9d",
     'Content-Type': 'application/json',
