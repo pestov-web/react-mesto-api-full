@@ -2,7 +2,7 @@
 # Учебный проект: Место - backend
 
 
-#### Демонстрация приложения: [https://api1.pestov-web.ru/](https://api1.pestov-web.ru/)
+#### Демонстрация приложения: [https://api2.pestov-web.ru/](https://api2.pestov-web.ru/)
 ### Стек приложения
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-141130?style=flat-square&logo=JavaScript)

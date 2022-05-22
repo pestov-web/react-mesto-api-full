@@ -18,11 +18,11 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 // авторизация
 const auth = require('./middlewares/auth');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const app = express();
 
 app.use('*', cors({
-  origin: 'https://pestov.students.nomoredomains.rocks',
+  origin: 'https://mesto.pestov-web.ru',
   credentials: true,
 }));
 
